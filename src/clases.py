@@ -1,3 +1,7 @@
+class Mutador():
+    def __init__(self):
+        print(self)
+        
 class Detector():
     nombre = "facundo"
     
@@ -7,13 +11,10 @@ class Detector():
     def __str__(self):
         return f"nombre: {self.nombre}"
 
-class Mutador():
+class Radiacion(Mutador):
     pass
 
-class Radiacion():
-    pass
-
-class Virus():
+class Virus(Mutador):
     pass
 
 class Sanador():
