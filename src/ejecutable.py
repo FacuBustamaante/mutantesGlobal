@@ -5,24 +5,25 @@ Hay cosas por modificar a medida que se vayan haciendo el resto de clases
 Se que la detector tiene que dar un booleano pero lo hice de esta forma así en un futuro
 se si lo esta detectando bien, cuando me asegure de eso lo cambio a booleano para que solo de V o F
 """
+
 matriz= []
-#La funcion pide al usuario que ingrese el ADN mediante un bucle, de esta forma lo puede hacer fila por fila
+
+#La funcion pide al usuario que ingrese el ADN mediante un bucle, de esta forma lo puede ghacer fila por fila
 def ingresarADN():
  for i in range(6):
     while True:
-        #Le pide al usuario que ingrese la fila correspondiente del ADN, elimina espacios en blanco
+        #Le pide al usuario que ingrese la fila correspondiente del ADN, elimina espacions en blanco
         #y hace todo a mayusculas
         fila = input(f"Ingrese la fila {i + 1} de la matriz (6 caracteres)> ").strip().upper()
         #Comprueba que lo ingresado sea de 6 caracteres y sean los caracteres correctos
         if len(fila) == 6 and all(base in 'ATCG' for base in fila):
-            #Agrega a la matriz cada fila ingresado por el usuario como una lista
-            #De esta forma la matriz es una lista de cada fila que contiene una lista con los caracteres
-            matriz.append(list(fila))  
+            #Agrega a la matriz cada fila ingresado
+            matriz.append(fila)  
             break 
         else:
             print("--ERROR--")
 
-#Es el menu en si, se le explica al usuario como, que ingresar y se le da un ejemplo
+#Es el menu en si, se le explica al usuario como, que ingresar y se le da un ejemplp
 def menu():
     print("""
     Ingrese un ADN que contenga las 4 bases nitrogenadas (una fila a la vez)
