@@ -23,9 +23,9 @@ def menu():
     ingresarADN()
     
     #Menu
-    print(f"La matriz ingresada es: ")
-    for x in matriz:
-        print(x)
+   # print(f"La matriz ingresada es: ")
+    #for x in matriz:
+     #   print(x)
     while True: 
         print("""
             --MENU--
@@ -67,6 +67,30 @@ def menu():
                             print(f"La base nitrogenada ingresada es {base_nitrogenada}.")
                             print("Mutación ingresada correctamente")
                             break
+                    
+                    
+                    #menu de seleccion de mutacion
+                    print("""
+                                ¿que mutasion desea ingresar en su ADN?
+                            <<<seleccione un numero para indicar su accion>>>
+                                    1.Mutante Diagonal
+                                    2.Mutante Vertical
+                                    3.Mutante horizontal
+                          
+                          """)
+                    seleccionar_mutacion=int(input())
+                    match seleccionar_mutacion:
+                        case 1:
+                            mutante_diagonal=Virus()
+                            mutante_diagonal.crear_mutante(matriz,base_nitrogenada,0)
+                            matriz=mutante_diagonal.matriz_mutante
+                        case 2:
+                            
+                            pass
+                        case 3:
+                            pass
+                        
+                        
             case 3: 
                 ADNU = Sanador(matriz)
                 print("--Se llama a la funcion para sanar mutaciones--")
