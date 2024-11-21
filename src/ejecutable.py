@@ -42,11 +42,7 @@ def menu():
                 print("--Se llama a la funcion para detectar mutaciones--")
                 ADNU=Detector(matriz)
                 TipoM = ADNU.detectar_mutantes()
-                if TipoM:
-                    print(f"Se detectó una {TipoM} en el ADN.")
-                    #print(f" ".join(matriz[0]), "\n", " ".join(matriz[1]))
-                else:
-                    print("No se detectaron mutaciones en el ADN.")
+                print(TipoM)
                 
             case 2: 
                     mutacion = input("""
