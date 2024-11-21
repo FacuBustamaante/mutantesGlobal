@@ -3,17 +3,20 @@ matriz= []
 
 #Input de matriz 
 def ingresarADN():
- for i in range(6):
-    while True:
-        fila = input(f"Ingrese la fila {i + 1} de la matriz (6 caracteres)> ").strip().upper()
-        if len(fila) == 6 and all(base in 'ATCG' for base in fila):
-            matriz.append(list(fila))  
-            break 
-        else:
-            print("--ERROR--")
+    global matriz  # Declarar matriz como global para modificarla
+    matriz = []  # Reiniciar matriz al ingresar ADN
+    for i in range(6):
+        while True:
+            fila = input(f"Ingrese la fila {i + 1} de la matriz (6 caracteres)> ").strip().upper()
+            if len(fila) == 6 and all(base in 'ATCG' for base in fila):
+                matriz.append(list(fila))  
+                break 
+            else:
+                print("--ERROR--")
 
 def menu():
-    print("Ingrese un ADN que contenga las 4 bases nitrogenadas (una fila a la vez)
+    global matriz #declaracion de matriz global para usarla
+    print("Ingrese un ADN que contenga las 4 bases nitrogenadas (una fila a la vez)")
     print("Adenina (A), Timina (T), Citosina (C) y Guanina (G)")
     ingresarADN()
     
@@ -61,9 +64,10 @@ def menu():
                     seleccionar_mutacion=int(input())
                     match seleccionar_mutacion:
                         case 1:
-                            mutante_diagonal=Virus()
-                            mutante_diagonal.crear_mutante(matriz,base_nitrogenada,0)
-                            matriz=mutante_diagonal.matriz_mutante
+                            #mutante_diagonal = Virus(matriz, base_nitrogenada)
+                            #matriz = mutante_diagonal.crear_mutante(matriz, base_nitrogenada, 0)
+                            #print("--Mutación diagonal aplicada correctamente--")
+                            pass
                         case 2:
                             
                             pass
