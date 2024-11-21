@@ -13,13 +13,8 @@ def ingresarADN():
             print("--ERROR--")
 
 def menu():
-    print("""
-        Ingrese un ADN que contenga las 4 bases nitrogenadas (una fila a la vez)
-        (Adenina (A), Timina (T), Citosina (C) y Guanina (G))
-        --EJEMPLO--
-        TTTTCA, GATTCA, CAACAT, GAGCTA, ATTGCG, CTGTTC
-        --EJEMPLO
-        """)
+    print("Ingrese un ADN que contenga las 4 bases nitrogenadas (una fila a la vez)
+    print("Adenina (A), Timina (T), Citosina (C) y Guanina (G)")
     ingresarADN()
     
     #Menu
@@ -27,14 +22,8 @@ def menu():
     #for x in matriz:
      #   print(x)
     while True: 
-        print("""
-            --MENU--
-            1. Detectar si hay mutaciones en el ADN
-            2. Mutar ADN
-            3. Sanar ADN
-            4. Mostrar ADN ingresado
-            --MENU--
-            """)
+        print("¿Que desea hacer?")
+        print("1.Detectar mutaciones-2.Mutar-3.Sanar")
         opcionU = int(input("Seleccione una opción: "))
         
         match opcionU:
@@ -42,26 +31,17 @@ def menu():
                 print("--Se llama a la funcion para detectar mutaciones--")
                 ADNU=Detector(matriz)
                 TipoM = ADNU.detectar_mutantes()
-                if TipoM:
-                    print(f"Se detectó una {TipoM} en el ADN.")
-                    #print(f" ".join(matriz[0]), "\n", " ".join(matriz[1]))
-                else:
-                    print("No se detectaron mutaciones en el ADN.")
+                print(TipoM)
                 
             case 2: 
-                    mutacion = input("""
-                                Elija la base nitrogenada que desea insertar: 
-                                Adenina (A), Timina (T), Citosina (C) y Guanina (G).
-                                >""").upper()
+                    mutacion = input("Elija la base Nitrogenada que desae insertar: (A,T,C,G)>").upper()
     
                     #Evaluación de que la base ingresada sea correcta.
                     while True:
                         if not re.match("^([ATGC]*)$",mutacion):
-                            print("""El dato ingresado es incorrecto, vuelva a intentarlo""")
-                            mutacion = input("""
-                                Elija la base nitrogenada que desea insertar: 
-                                Adenina (A), Timina (T), Citosina (C) y Guanina (G).
-                                >""").upper()
+                            print("El dato ingresado es incorrecto, vuelva a intentarlo")
+                            mutacion = input("Elija la base Nitrogenada que desae insertar: (A,T,C,G)>").upper()
+                                
                         else:
                             base_nitrogenada = mutacion * 4
                             print(f"La base nitrogenada ingresada es {base_nitrogenada}.")
