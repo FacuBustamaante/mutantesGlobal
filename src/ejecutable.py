@@ -9,7 +9,8 @@ def ingresarADN():
         while True:
             fila = input(f"Ingrese la fila {i + 1} de la matriz (6 caracteres)> ").strip().upper()
             if len(fila) == 6 and all(base in 'ATCG' for base in fila):
-                matriz.append(list(fila))  
+                matriz.append(list(fila))
+                  
                 break 
             else:
                 print("--ERROR--")
@@ -21,13 +22,14 @@ def menu():
     ingresarADN()
     
     #Menu
-   # print(f"La matriz ingresada es: ")
-    #for x in matriz:
-     #   print(x)
+   
     while True: 
-        print("¿Que desea hacer?")
-        print("1.Detectar mutaciones-2.Mutar-3.Sanar")
-        opcionU = int(input("Seleccione una opción: "))
+        print("\n   ¿QUE DESEA HACER?   ")
+        print("1.Detectar mutaciones")
+        print("2.Mutar")
+        print("3.Sanar")
+        print("4.ver su ADN")
+        opcionU = int(input())
         
         match opcionU:
             case 1: 
@@ -37,7 +39,7 @@ def menu():
                 print(TipoM)
                 
             case 2: 
-                    mutacion = input("Elija la base Nitrogenada que desae insertar: (A,T,C,G)>").upper()
+                    mutacion = input("\nElija la base Nitrogenada que desae insertar: (A,T,C,G)>").upper()
     
                     #Evaluación de que la base ingresada sea correcta.
                     while True:
@@ -46,33 +48,50 @@ def menu():
                             mutacion = input("Elija la base Nitrogenada que desae insertar: (A,T,C,G)>").upper()
                                 
                         else:
-                            base_nitrogenada = mutacion * 4
+                            base_nitrogenada = mutacion
                             print(f"La base nitrogenada ingresada es {base_nitrogenada}.")
-                            print("Mutación ingresada correctamente")
                             break
+                    
+                    print("\ningrese la posicion inicial en donde desea insertar la mutacion")
+                    print("debe ser un digito del 1 al 3")
+                    while True:
+                        try:
+                            posicion_inicial=int(input())
+                            if posicion_inicial==1 or posicion_inicial==2 or posicion_inicial==3:
+                                posicion_inicial=posicion_inicial-1
+                                break
+                            else:
+                                print("ingrese un valor del 1 al 3")
+                            
+                        except ValueError:
+                            print("--ERROR: debe ingresar un valor valido--")
+                            continue  
                     
                     
                     #menu de seleccion de mutacion
-                    print("""
-                                ¿que mutasion desea ingresar en su ADN?
-                            <<<seleccione un numero para indicar su accion>>>
-                                    1.Mutante Diagonal
-                                    2.Mutante Vertical
-                                    3.Mutante horizontal
-                          
-                          """)
-                    seleccionar_mutacion=int(input())
+                    print("\n¿que mutasion desea ingresar en su ADN?")       
+                    print("1.   <<<Mutante Diagonal>>>")                
+                    print("2.   <<<Mutante Vertical>>>")                
+                    print("3.   <<<Mutante horizonta>>>")
+                    while True:
+                        try:
+                            seleccionar_mutacion = int(input("Seleccione una opción: "))
+                            break
+                        except ValueError:
+                            print("--ERROR: Debe ingresar un número válido--")
+                            continue
+                    
                     match seleccionar_mutacion:
                         case 1:
-                            #mutante_diagonal = Virus(matriz, base_nitrogenada)
-                            #matriz = mutante_diagonal.crear_mutante(matriz, base_nitrogenada, 0)
-                            #print("--Mutación diagonal aplicada correctamente--")
-                            pass
+                            mutante_diagonal= Virus(matriz, base_nitrogenada)
+                            matriz = mutante_diagonal.crear_mutante(matriz,posicion_inicial)
+                            print("--Mutación diagonal aplicada correctamente--")
                         case 2:
                             
                             pass
                         case 3:
                             pass
+                        
                         
                         
             case 3: 
@@ -81,6 +100,9 @@ def menu():
                
             case 4: 
                 print("--Se imprime el ADN ingresado--")
-                print(matriz)
+                
+                for fila in matriz:
+                    print(fila)
+
 menu()
 
