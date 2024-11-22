@@ -28,7 +28,6 @@ class Detector:
             """            
             for i in range(len(fila) - 3):  
                 if fila[i] == fila[i+1] == fila[i+2] == fila[i+3]:
-                    print("Mutacion detectada")
                     return True
         return False
     
@@ -39,7 +38,6 @@ class Detector:
             for fil in range(len(self.matriz) - 3): 
                 if (self.matriz[fil][col] == self.matriz[fil+1][col] ==
                     self.matriz[fil+2][col] == self.matriz[fil+3][col]):
-                    print("Mutacion detectada")
                     return True
         return False
 
@@ -51,7 +49,6 @@ class Detector:
                 #De esta forma se pueden asignar los valores y recorre cada posición de la matriz en diagonal
                 if (self.matriz[fil][col] == self.matriz[fil+1][col+1] ==
                     self.matriz[fil+2][col+2] == self.matriz[fil+3][col+3]):
-                    print("Mutacion detectada")
                     return True
         return False
     
@@ -63,7 +60,6 @@ class Detector:
                 #Se resta en vez de sumar así va de izquierda a derecha en las columnas
                 if (self.matriz[row][col] == self.matriz[row+1][col-1] ==
                     self.matriz[row+2][col-2] == self.matriz[row+3][col-3]):
-                    print("Mutacion detectada")
                     return True
         return False
 
