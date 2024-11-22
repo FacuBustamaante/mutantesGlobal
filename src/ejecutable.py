@@ -38,7 +38,9 @@ def menu():
             case 1: 
                 ADNU=Detector(matriz)
                 TipoM = ADNU.detectar_mutantes()
-                print(TipoM)
+                  if(TipoM == True):
+                    print("Se detecto una mutacion")
+                  else: print("No se detectaron mutaciones")
                 
             case 2: 
                     mutacion = input("\nElija la base Nitrogenada que desae insertar: (A,T,C,G)>").upper()
