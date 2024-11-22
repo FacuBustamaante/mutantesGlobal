@@ -1,6 +1,17 @@
 from clases import *
 matriz= []
 
+def mostrarMatriz():
+    
+    """
+    Esta función imprime la matriz en un formato de 6x6
+    
+    """    
+    
+    print("La matriz ingresada es:\n")
+    for x in matriz:
+        print(" ".join(x))
+        
 #Input de matriz 
 def ingresarADN():
  for i in range(6):
@@ -13,17 +24,13 @@ def ingresarADN():
             print("--ERROR--")
 
 def menu():
-    print("Ingrese un ADN que contenga las 4 bases nitrogenadas (una fila a la vez)
-    print("Adenina (A), Timina (T), Citosina (C) y Guanina (G)")
+    print("Ingrese un ADN que contenga las 4 bases nitrogenadas (una fila a la vez)\nAdenina (A), Timina (T), Citosina (C) y Guanina (G)")
     ingresarADN()
-    
+  
     #Menu
-    print(f"La matriz ingresada es: ")
-    for x in matriz:
-        print(x)
+    mostrarMatriz() 
     while True: 
-        print("¿Que desea hacer?")
-        print("1.Detectar mutaciones-2.Mutar-3.Sanar")
+        print("¿Que desea hacer?\n1. Detectar mutaciones\n2. Mutar\n3. Sanar\n4. Mostrar la matriz")
         opcionU = int(input("Seleccione una opción: "))
         
         match opcionU:
@@ -52,7 +59,5 @@ def menu():
                 print("--Se llama a la funcion para sanar mutaciones--")
                
             case 4: 
-                print("--Se imprime el ADN ingresado--")
-                print(matriz)
+                mostrarMatriz()
 menu()
-
