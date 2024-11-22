@@ -83,12 +83,18 @@ def menu():
                             print("Mutación diagonal aplicada correctamente")
                         case 2:
                             #Mutante Vertical
-                            pass
+                            mutante_vertical = Radiacion(matriz, base_nitrogenada)
+                            matriz = mutante_vertical.crear_mutanteV(matriz,posicion_inicial)
+                            print("Mutación vertical aplicada correctamente")
                         case 3:
                             #Mutante Horizontal
-                            pass                       
+                            mutante_horizontal = Radiacion(matriz, base_nitrogenada)
+                            matriz = mutante_horizontal.crear_mutanteH(matriz,posicion_inicial)
+                            print("Mutación horizontal aplicada correctamente") 
             case 3: 
-                ADNU = Sanador(matriz)
+                sanador = Sanador()
+                matriz = sanador.sanar_mutantes(matriz)
+                print("ADN sanado correctamente")   
             case 4: 
                 mostrarMatriz()                
 menu()
