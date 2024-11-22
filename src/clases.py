@@ -7,27 +7,25 @@ class Mutador():
     #Método constructor
     def __init__(self, base_nitrogenada):
         self.base_nitrogenada = base_nitrogenada
-    
     def crear_mutante(self, matriz):
         pass
         
 class Detector:
-    #Método constructor donde se dividen los caracteres de cada fila para facilitar su análisis
     def __init__(self, matriz):
         self.matriz = [list(fila) for fila in matriz]
 
     def detectar_mutantes(self):
-        # Llama a las funciones para detectar la mutación
         if((self.Mut_horizontal() or self.mut_vertical() or self.mut_diagonalD() or self.mut_diagonalI())):
             return True
         return False
 
     def Mut_horizontal(self):
-        #Recorre cada fila individual buscando el carácter que se repita 4 veces
         for fila in self.matriz:
-            #El -3 es para evitar desbordamiento, ya que el código busca 3 posiciones por delante en la que esté el bucle
-            #Por eso el máximo es la posición 2, así 3 posiciones por delante llega al 3 y no intenta acceder a una posición
-            #que no existe
+            """
+                El -3 es para evitar desbordamiento, ya que el código busca 3 posiciones por delante en la que esté el bucle
+                Por eso el máximo es la posición 2, así 3 posiciones por delante llega al 3 y no intenta acceder a una posición
+                que no existe
+            """            
             for i in range(len(fila) - 3):  
                 if fila[i] == fila[i+1] == fila[i+2] == fila[i+3]:
                     print("Mutacion detectada")
