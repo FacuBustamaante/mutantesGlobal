@@ -64,7 +64,32 @@ class Detector:
         return False
 
 class Radiacion(Mutador):
-    pass
+    
+    def __init__(self, matriz, base_nitrogenada):
+        super().__init__(base_nitrogenada)  # Inicializa el constructor de la clase padre
+        self.matriz = matriz  # Matriz que se usará para la mutación
+        
+    def crear_mutanteV(self,matriz,posicion_inicial):
+     self.matriz = matriz
+      
+     matriz_modificada = [list(fila) for fila in matriz]
+     
+     for i in range(posicion_inicial, min(posicion_inicial + 4, len(matriz_modificada))):
+                matriz_modificada[i][posicion_inicial] = self.base_nitrogenada
+        # Convertir de nuevo las listas de caracteres a cadenas y retornar la matriz modificada
+     return ["".join(fila) for fila in matriz_modificada]
+
+    
+    def crear_mutanteH(self,matriz, posicion_inicial):
+        self.matriz = matriz
+        
+        matriz_modificada = [list(fila) for fila in self.matriz]
+            # Mutación horizontal: Modificar la fila seleccionada
+            
+        for i in range(posicion_inicial, min(posicion_inicial + 4, len(matriz_modificada))):
+                matriz_modificada[posicion_inicial][i] = self.base_nitrogenada
+        # Convertir de nuevo las listas de caracteres a cadenas y retornar la matriz modificada
+        return ["".join(fila) for fila in matriz_modificada]
 
 
 class Virus(Mutador):
@@ -98,6 +123,30 @@ class Virus(Mutador):
         return self.matriz_mutante
     
 
-class Sanador():
-    pass
+import random
+
+class Sanador:
+    def __init__(self):
+     
+        pass
+
+    def sanar_mutantes(self,matriz):
+         
+        detector = Detector(matriz)
+        if detector.detectar_mutantes():
+            nueva_matriz = self.generar_adn_aleatorio()
+            while detector.detectar_mutantes == True:
+                nueva_matriz = self.generar_adn_aleatorio()
+            return nueva_matriz
+        return matriz
+
+    def generar_adn_aleatorio(self):
+      
+        bases = ["A", "T", "C", "G"]
+        nueva_matriz = []
+        for _ in range(6):
+            fila = ''.join(random.choice(bases) for _ in range(6))
+            nueva_matriz.append(fila)
+        return nueva_matriz
+    
 
