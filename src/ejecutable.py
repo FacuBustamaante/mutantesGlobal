@@ -38,9 +38,11 @@ def menu():
             case 1: 
                 ADNU=Detector(matriz)
                 TipoM = ADNU.detectar_mutantes()
-                  if(TipoM == True):
-                    print("Se detecto una mutacion")
-                  else: print("No se detectaron mutaciones")
+                if(TipoM == True):
+                        print(f"Se detecto una mutación")
+                        mostrarMatriz()
+                else: 
+                    print("No se detectaron mutaciones")
                 
             case 2: 
                     mutacion = input("\nElija la base Nitrogenada que desae insertar: (A,T,C,G)>").upper()
@@ -75,7 +77,7 @@ def menu():
                             seleccionar_mutacion = int(input("Seleccione una opción: "))
                             break
                         except ValueError:
-                            print("--ERROR: Debe ingresar un número válido--")
+                            print("ERROR: Debe ingresar un número válido")
                             continue
                     
                     match seleccionar_mutacion:
@@ -83,20 +85,24 @@ def menu():
                             mutante_diagonal = Virus(matriz, base_nitrogenada)
                             matriz = mutante_diagonal.crear_mutante(matriz,posicion_inicial)
                             print("Mutación diagonal aplicada correctamente")
+                            mostrarMatriz()
                         case 2:
                             #Mutante Vertical
                             mutante_vertical = Radiacion(matriz, base_nitrogenada)
                             matriz = mutante_vertical.crear_mutanteV(matriz,posicion_inicial)
                             print("Mutación vertical aplicada correctamente")
+                            mostrarMatriz()
                         case 3:
                             #Mutante Horizontal
                             mutante_horizontal = Radiacion(matriz, base_nitrogenada)
                             matriz = mutante_horizontal.crear_mutanteH(matriz,posicion_inicial)
                             print("Mutación horizontal aplicada correctamente") 
+                            mostrarMatriz()
             case 3: 
                 sanador = Sanador()
                 matriz = sanador.sanar_mutantes(matriz)
                 print("ADN sanado correctamente")   
+                mostrarMatriz()
             case 4: 
                 mostrarMatriz()                
 menu()
